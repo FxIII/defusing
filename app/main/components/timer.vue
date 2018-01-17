@@ -97,7 +97,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:400);
+@import url("../assets/roboto.css");
 .timer{
     display: flex;
     justify-content: center;
