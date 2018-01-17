@@ -1,6 +1,6 @@
 # defusing
 
-> A nwjs-vue application
+> A defusing simulation app
 
 #### Build Setup
 
