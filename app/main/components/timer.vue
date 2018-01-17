@@ -26,11 +26,11 @@ export default {
         this.bus.$on("start",this.start)
         this.bus.$on("reset",this.reset)
     } ,
-    props : ["length","speed","bus"],
+    props : ["speed","bus"],
 
     data() {
         return {
-            left: this.length,
+            left: this.$store.config.timer.length,
             lastTime: null,
             runner: null,
             downcap: 0,

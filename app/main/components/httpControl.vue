@@ -4,7 +4,6 @@
 
 <script>
 const http = require('http');
-const port = 3000
 
 export default {
     mounted() {
@@ -31,7 +30,7 @@ export default {
             this.send(response, 'Thank you for using our services!')
             return;
           }
-          if (request.url == "/"+this.code) {
+          if (request.url == "/"+this.$store.httpControl.correctCode) {
             this.$emit("deactivate");
             this.send(response, 'Thank you for using our services!')
           }else{
@@ -41,7 +40,7 @@ export default {
           }
         }
         const server = http.createServer(requestHandler)
-        server.listen(port, (err) => {
+        server.listen(this.$store.config.httpControl.port, (err) => {
           if (err) {
             this.status = "error"
             this.msg = err
@@ -55,7 +54,7 @@ export default {
           }
         })
     } ,
-    props : ["code","bus"],
+    props : ["bus"],
     data() {
         return {
           status: "setup",

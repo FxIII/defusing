@@ -1,9 +1,9 @@
 <template>
   <div id="landing-page">
     <h1>{{ msg }}</h1>
-    <httpControl code="155387" :bus="bus"></httpControl>
+    <httpControl :bus="bus"></httpControl>
     <transition :duration="{enter:125,leave:2000}"  name="fade">
-     <timer v-if="running" length="900" :speed="speed" :bus="bus" ></timer>
+     <timer v-if="running" :speed="speed" :bus="bus" ></timer>
     </transition>
 
   </div>
