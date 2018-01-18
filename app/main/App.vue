@@ -18,12 +18,17 @@ function getConfig(){
   return jsonContent;
   }catch (err) {
     return {
-      httpControl:{
-        port: 3000,
-        correctCode: 155387 
+      "httpControl": {
+          "port": 3000,
+          "correctCode": 155387
       },
-      timer:{
-        length:900
+      "usb": {
+          "correctUSB": null,
+          "seenDevices": {
+          }
+      },
+      "timer": {
+          "length": 900
       }
     }
   } 

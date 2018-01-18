@@ -14,5 +14,6 @@
     "output": "../releases"
   },
   "dependencies": {
+    "usb": "^1.3.1"
   }
 }

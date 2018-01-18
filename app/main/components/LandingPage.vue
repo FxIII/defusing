@@ -1,7 +1,8 @@
 <template>
   <div id="landing-page">
     <h1>{{ msg }}</h1>
-    <httpControl :bus="bus"></httpControl>
+    <httpControl :bus="bus"></httpControl><br>
+    <usbControl :bus="bus"></usbControl><br>
     <transition :duration="{enter:125,leave:2000}"  name="fade">
      <timer v-if="running" :speed="speed" :bus="bus" ></timer>
     </transition>
