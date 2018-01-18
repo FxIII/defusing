@@ -14,6 +14,7 @@
 import Vue from 'vue'
 import timer from './timer';
 import httpControl from './httpControl';
+import usbControl from './usbControl';
 export default {
   mounted(){
     window.home=this;
@@ -23,6 +24,7 @@ export default {
   components: {
     timer,
     httpControl,
+    usbControl,
   },
   data () {
     return {
