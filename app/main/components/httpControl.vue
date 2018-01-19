@@ -4,7 +4,7 @@
 
 <script>
 const http = require('http');
-
+ 
 export default {
     mounted() {
         window.httpControl = this;
@@ -30,7 +30,7 @@ export default {
             this.send(response, 'Thank you for using our services!')
             return;
           }
-          if (request.url == "/"+this.$store.httpControl.correctCode) {
+          if (request.url == "/"+this.$store.confighttpControl.correctCode) {
             this.$emit("deactivate");
             this.send(response, 'Thank you for using our services!')
           }else{
