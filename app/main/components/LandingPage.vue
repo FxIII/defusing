@@ -3,6 +3,7 @@
     <h1>{{ msg }}</h1>
     <httpControl :bus="bus"></httpControl><br>
     <usbControl :bus="bus"></usbControl><br>
+    <div class="warning">{{ warningMsg }}</div>
     <transition :duration="{enter:125,leave:2000}" name="fade">
      <timer v-if="running" :speed="speed" :bus="bus" @undeflow="byebye"></timer>
     </transition>
@@ -42,6 +43,7 @@ export default {
       this.warningLevel=0;
     },
     makeThingsWorse(){
+      if (this.warningLevel <0 ) return; // don't bother if already deactivated
       this.warningLevel +=1
     },
     deactivate(){
@@ -57,6 +59,10 @@ export default {
       var capSpeed = 10;
       var speed = speeds[this.warningLevel]
       return (speed === undefined) ? capSpeed : speed
+    },
+    warningMsg(){
+      if (this.warningLevel <= 0) return "";
+      return `WARNING! Hack detected - Defensive Level ${this.warningLevel}: SpeedUP ${this.speed}X`;
     }
   }
 }
@@ -86,5 +92,11 @@ a {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+.warning{
+  min-height:1.2em;
+  line-height:1.2;
+  font-weight: bold;
+  color:red;
 }
 </style>
