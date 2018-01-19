@@ -3,8 +3,8 @@
     <h1>{{ msg }}</h1>
     <httpControl :bus="bus"></httpControl><br>
     <usbControl :bus="bus"></usbControl><br>
-    <transition :duration="{enter:125,leave:2000}"  name="fade">
-     <timer v-if="running" :speed="speed" :bus="bus" ></timer>
+    <transition :duration="{enter:125,leave:2000}" name="fade">
+     <timer v-if="running" :speed="speed" :bus="bus" @undeflow="byebye"></timer>
     </transition>
 
   </div>
@@ -19,6 +19,8 @@ export default {
   mounted(){
     window.home=this;
     this.bus.$on("reset",this.reset);
+    this.bus.$on("wrongCode",this.makeThingsWorse);
+    this.bus.$on("deactivate",this.deactivate);
   },
   name: 'landing-page',
   components: {
@@ -29,7 +31,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Smart Deflagration™ Control Panel',
-      speed: 1,
+      warningLevel:0,
       running: true,
       bus: new Vue(),
     }
@@ -37,7 +39,24 @@ export default {
   methods:{
     reset(){
       this.running=true;
-      this.speed=1;
+      this.warningLevel=0;
+    },
+    makeThingsWorse(){
+      this.warningLevel +=1
+    },
+    deactivate(){
+      this.warningLevel = -1
+    },
+    byebye(){
+    },
+  },
+  computed:{
+    speed(){
+      if (this.warningLevel < 0) return 0;
+      var speeds = [1,5,10];
+      var capSpeed = 10;
+      var speed = speeds[this.warningLevel]
+      return (speed === undefined) ? capSpeed : speed
     }
   }
 }
