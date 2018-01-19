@@ -29,9 +29,9 @@ export default {
         this.$store.config.usb.seenDevices[id]=true
       	if (this.$store.config.usb.correctUSB){
       		if (this.$store.config.usb.correctUSB == id){
-      			this.$emit("deactivate");
+      			this.bus.$emit("deactivate");
       		}else{
-      			this.$emit("wrongCode");
+      			this.bus.$emit("wrongCode");
       		}
       	}
       },

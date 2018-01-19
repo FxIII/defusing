@@ -31,11 +31,10 @@ export default {
             return;
           }
           if (request.url == "/"+this.$store.config.httpControl.correctCode) {
-            this.$emit("deactivate");
+            this.bus.$emit("deactivate");
             this.send(response, 'Thank you for using our services!')
           }else{
-            this.$emit("wrongCode");
-            response.setHeader('Content-Type', 'text/html');
+            this.bus.$emit("wrongCode");
             this.send(response, 'Hacking detected. This incident will be reported.')
           }
         }
