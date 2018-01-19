@@ -46,7 +46,7 @@ export default {
       },
       reset(){
         this.stop();
-        this.left = this.length;
+        this.left = this.$store.config.timer.length;
       },
       start(){
         if (this.runner !== null) return;
