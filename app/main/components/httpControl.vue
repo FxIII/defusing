@@ -30,7 +30,7 @@ export default {
             this.send(response, 'Thank you for using our services!')
             return;
           }
-          if (request.url == "/"+this.$store.confighttpControl.correctCode) {
+          if (request.url == "/"+this.$store.config.httpControl.correctCode) {
             this.$emit("deactivate");
             this.send(response, 'Thank you for using our services!')
           }else{
