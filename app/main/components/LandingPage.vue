@@ -38,7 +38,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Smart Deflagration™ Control Panel',
-      boomMsg: 'Sorry Mate!',
+      boomMsg: 'Bridge destoryed',
       warningLevel:0,
       running: true,
       speeds: [1,5,10],
