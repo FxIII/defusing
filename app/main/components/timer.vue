@@ -64,6 +64,12 @@ export default {
         if (this.left < this.downcap){
           this.left = this.downcap
           this.$emit("underflow")
+          this.bus.$emit("second",this.left);
+          this.stop();
+        }else{
+          if (this.left %1 < delta){ // second crossing
+            this.bus.$emit("second",this.left);
+          }
         }
       },
       stop(){
